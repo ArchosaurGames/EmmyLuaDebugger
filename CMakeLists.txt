@@ -5,7 +5,7 @@ set(CMAKE_INSTALL_PREFIX install)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(EMMY_LUA_VERSION "54" CACHE STRING "Lua version: jit/51/52/53/54")
+set(EMMY_LUA_VERSION "51" CACHE STRING "Lua version: jit/51/52/53/54")
 
 if(${EMMY_LUA_VERSION} STREQUAL "54")
     set(EMMY_LUA_DIR "lua-5.4.0")
@@ -44,6 +44,7 @@ add_subdirectory(third-party/libuv-1.29.0)
 add_subdirectory(emmy_debugger)
 add_subdirectory(emmy_core)
 
+#[[
 if(WIN32)
     macro(source_group_by_dir proj_dir source_files)
         if(MSVC OR APPLE)
@@ -66,3 +67,4 @@ if(WIN32)
     add_subdirectory(third-party/EasyHook)
     add_subdirectory(emmy_hook)
 endif(WIN32)
+]]

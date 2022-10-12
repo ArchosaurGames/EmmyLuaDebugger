@@ -19,12 +19,14 @@
 
 #if  defined(EMMY_LUA_51) || defined(EMMY_LUA_JIT)
 #include "emmy_debugger/api/lua_api.h"
+/*
 int lua_absindex(lua_State *L, int idx) {
 	if (idx > 0) {
 		return idx;
 	}
 	return lua_gettop(L) + idx + 1;
 }
+
 #ifndef EMMY_LUA_JIT_SUPPORT_LUA_SETFUNCS
 void luaL_setfuncs(lua_State* L, const luaL_Reg* l, int nup) {
 	for (; l->name != nullptr; l++) {
@@ -38,7 +40,8 @@ void luaL_setfuncs(lua_State* L, const luaL_Reg* l, int nup) {
 
 void lua_pushglobaltable(lua_State* L)
 {
+	int LUA_GLOBALSINDEX = -10002;
 	lua_pushvalue(L, LUA_GLOBALSINDEX);
 }
-
+*/
 #endif

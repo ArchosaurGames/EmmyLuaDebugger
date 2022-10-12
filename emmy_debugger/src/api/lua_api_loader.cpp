@@ -34,12 +34,13 @@ HMODULE FindLuaModule()
 
 	while (moreModules)
 	{
-		if (GetProcAddress(module.hModule, "lua_gettop"))
+		if (GetProcAddress(module.hModule, "?lua_gettop@@YAHPEAUlua_State@@@Z"))
 		{
 			hModule = module.hModule;
 			break;
 		}
 		moreModules = Module32Next(hSnapshot, &module);
+		printf("[EMMY] moduleName: %s \n", module.szModule);
 	}
 	return hModule;
 }
@@ -414,75 +415,75 @@ void lua_insert(lua_State* L, int idx)
 
 extern "C" bool SetupLuaAPI()
 {
-	LOAD_LUA_API(lua_gettop);
-	LOAD_LUA_API(lua_settop);
-	LOAD_LUA_API(lua_type);
-	LOAD_LUA_API(lua_typename);
-	LOAD_LUA_API(lua_tolstring);
-	LOAD_LUA_API(lua_toboolean);
-	LOAD_LUA_API(lua_pushnil);
-	LOAD_LUA_API(lua_pushnumber);
-	LOAD_LUA_API(lua_pushlstring);
-	LOAD_LUA_API(lua_pushstring);
-	LOAD_LUA_API(lua_pushcclosure);
-	LOAD_LUA_API(lua_pushboolean);
-	LOAD_LUA_API(lua_pushvalue);
-	LOAD_LUA_API(lua_getfield);
-	LOAD_LUA_API(lua_next);
-	LOAD_LUA_API(lua_createtable);
-	LOAD_LUA_API(lua_setfield);
-	LOAD_LUA_API(lua_setmetatable);
-	LOAD_LUA_API(lua_getstack);
-	LOAD_LUA_API(lua_getinfo);
-	LOAD_LUA_API(lua_getlocal);
-	LOAD_LUA_API(lua_getupvalue);
-	LOAD_LUA_API(lua_setupvalue);
-	LOAD_LUA_API(lua_sethook);
-	LOAD_LUA_API(luaL_loadstring);
-	LOAD_LUA_API(luaL_checklstring);
-	LOAD_LUA_API(luaL_checknumber);
-	LOAD_LUA_API(lua_topointer);
-	LOAD_LUA_API(lua_getmetatable);
-	LOAD_LUA_API(lua_rawget);
-	LOAD_LUA_API(lua_rawset);
-	LOAD_LUA_API(lua_pushlightuserdata);
-	LOAD_LUA_API(lua_touserdata);
-	LOAD_LUA_API(luaL_newstate);
-	LOAD_LUA_API(lua_close);
-	LOAD_LUA_API(lua_pushthread);
+	LOAD_LUA_API(lua_gettop, ?lua_gettop@@YAHPEAUlua_State@@@Z);
+	LOAD_LUA_API(lua_settop, ?lua_settop@@YAXPEAUlua_State@@H@Z);
+	LOAD_LUA_API(lua_type, ?lua_type@@YAHPEAUlua_State@@H@Z);
+	LOAD_LUA_API(lua_typename, ?lua_typename@@YAPEBDPEAUlua_State@@H@Z);
+	LOAD_LUA_API(lua_tolstring, ?lua_tolstring@@YAPEBDPEAUlua_State@@HPEA_K@Z);
+	LOAD_LUA_API(lua_toboolean, ?lua_toboolean@@YAHPEAUlua_State@@H@Z);
+	LOAD_LUA_API(lua_pushnil, ?lua_pushnil@@YAXPEAUlua_State@@@Z);
+	LOAD_LUA_API(lua_pushnumber, ?lua_pushnumber@@YAXPEAUlua_State@@N@Z);
+	LOAD_LUA_API(lua_pushlstring, ?lua_pushlstring@@YAXPEAUlua_State@@PEBD_K@Z);
+	LOAD_LUA_API(lua_pushstring, ?lua_pushstring@@YAXPEAUlua_State@@PEBD@Z);
+	LOAD_LUA_API(lua_pushcclosure, ?lua_pushcclosure@@YAXPEAUlua_State@@P6AH0@ZH@Z);
+	LOAD_LUA_API(lua_pushboolean, ?lua_pushboolean@@YAXPEAUlua_State@@H@Z);
+	LOAD_LUA_API(lua_pushvalue,?lua_pushvalue@@YAXPEAUlua_State@@H@Z);
+	LOAD_LUA_API(lua_getfield,?lua_getfield@@YAXPEAUlua_State@@HPEBD@Z);
+	LOAD_LUA_API(lua_next,?lua_next@@YAHPEAUlua_State@@H@Z);
+	LOAD_LUA_API(lua_createtable,?lua_createtable@@YAXPEAUlua_State@@HH@Z);
+	LOAD_LUA_API(lua_setfield,?lua_setfield@@YAXPEAUlua_State@@HPEBD@Z);
+	LOAD_LUA_API(lua_setmetatable,?lua_setmetatable@@YAHPEAUlua_State@@H@Z);
+	LOAD_LUA_API(lua_getstack,?lua_getstack@@YAHPEAUlua_State@@HPEAUlua_Debug@@@Z);
+	LOAD_LUA_API(lua_getinfo,?lua_getinfo@@YAHPEAUlua_State@@PEBDPEAUlua_Debug@@@Z);
+	LOAD_LUA_API(lua_getlocal,?lua_getlocal@@YAPEBDPEAUlua_State@@PEBUlua_Debug@@H@Z);
+	LOAD_LUA_API(lua_getupvalue,?lua_getupvalue@@YAPEBDPEAUlua_State@@HH@Z);
+	LOAD_LUA_API(lua_setupvalue,?lua_setupvalue@@YAPEBDPEAUlua_State@@HH@Z);
+	LOAD_LUA_API(lua_sethook,?lua_sethook@@YAHPEAUlua_State@@P6AX0PEAUlua_Debug@@@ZHH@Z);
+	LOAD_LUA_API(luaL_loadstring,?luaL_loadstring@@YAHPEAUlua_State@@PEBD@Z);
+	LOAD_LUA_API(luaL_checklstring,?luaL_checklstring@@YAPEBDPEAUlua_State@@HPEA_K@Z);
+	LOAD_LUA_API(luaL_checknumber,?luaL_checknumber@@YANPEAUlua_State@@H@Z);
+	LOAD_LUA_API(lua_topointer,?lua_topointer@@YAPEBXPEAUlua_State@@H@Z);
+	LOAD_LUA_API(lua_getmetatable,?lua_getmetatable@@YAHPEAUlua_State@@H@Z);
+	LOAD_LUA_API(lua_rawget,?lua_rawget@@YAXPEAUlua_State@@H@Z);
+	LOAD_LUA_API(lua_rawset,?lua_rawset@@YAXPEAUlua_State@@H@Z);
+	LOAD_LUA_API(lua_pushlightuserdata,?lua_pushlightuserdata@@YAXPEAUlua_State@@PEAX@Z);
+	LOAD_LUA_API(lua_touserdata,?lua_touserdata@@YAPEAXPEAUlua_State@@H@Z);
+	LOAD_LUA_API(luaL_newstate,?luaL_newstate_C@@YAPEAUlua_State@@XZ);
+	LOAD_LUA_API(lua_close,?lua_close@@YAXPEAUlua_State@@@Z);
+	LOAD_LUA_API(lua_pushthread,?lua_pushthread@@YAHPEAUlua_State@@@Z);
 
-	LOAD_LUA_API(lua_rawseti);
-	LOAD_LUA_API(lua_rawgeti);
+	LOAD_LUA_API(lua_rawseti,?lua_rawseti@@YAXPEAUlua_State@@HH@Z);
+	LOAD_LUA_API(lua_rawgeti,?lua_rawgeti@@YAXPEAUlua_State@@HH@Z);
 	//51
-	LOAD_LUA_API_E(lua_setfenv);
-	LOAD_LUA_API_E(lua_tointeger);
-	LOAD_LUA_API_E(lua_tonumber);
-	LOAD_LUA_API_E(lua_call);
-	LOAD_LUA_API_E(lua_pcall);
+	LOAD_LUA_API_E(lua_setfenv,?lua_setfenv@@YAHPEAUlua_State@@H@Z);
+	LOAD_LUA_API_E(lua_tointeger,?lua_tointeger@@YAHPEAUlua_State@@H@Z);
+	LOAD_LUA_API_E(lua_tonumber,?lua_tonumber@@YANPEAUlua_State@@H@Z);
+	LOAD_LUA_API_E(lua_call,?lua_call@@YAXPEAUlua_State@@HH@Z);
+	LOAD_LUA_API_E(lua_pcall,?lua_pcall@@YAHPEAUlua_State@@HHH@Z);
 	//51 & 52
-	LOAD_LUA_API_E(lua_remove);
+	LOAD_LUA_API_E(lua_remove,?lua_remove@@YAXPEAUlua_State@@H@Z);
 	//52 & 53 & 54
-	LOAD_LUA_API_E(lua_tointegerx);
-	LOAD_LUA_API_E(lua_tonumberx);
-	LOAD_LUA_API_E(lua_getglobal);
-	LOAD_LUA_API_E(lua_setglobal);
-	LOAD_LUA_API_E(lua_callk);
-	LOAD_LUA_API_E(lua_pcallk);
-	LOAD_LUA_API_E(luaL_setfuncs);
-	LOAD_LUA_API_E(lua_absindex);
-	LOAD_LUA_API_E(lua_rawgetp);
-	LOAD_LUA_API_E(lua_rawsetp);
+	LOAD_LUA_API_E(lua_tointegerx, A);
+	LOAD_LUA_API_E(lua_tonumberx, A);
+	LOAD_LUA_API_E(lua_getglobal, A);
+	LOAD_LUA_API_E(lua_setglobal, A);
+	LOAD_LUA_API_E(lua_callk, A);
+	LOAD_LUA_API_E(lua_pcallk,A);
+	LOAD_LUA_API_E(luaL_setfuncs,A);
+	LOAD_LUA_API_E(lua_absindex,A);
+	LOAD_LUA_API_E(lua_rawgetp,A);
+	LOAD_LUA_API_E(lua_rawsetp,A);
 
 
 	// 51 & 52 & 53
-	LOAD_LUA_API_E(lua_newuserdata);
+	LOAD_LUA_API_E(lua_newuserdata,?lua_newuserdata@@YAPEAXPEAUlua_State@@_K@Z);
 	//53
-	LOAD_LUA_API_E(lua_rotate);
+	LOAD_LUA_API_E(lua_rotate,A);
 	//54
-	LOAD_LUA_API_E(lua_newuserdatauv);
+	LOAD_LUA_API_E(lua_newuserdatauv,A);
 
 	//jit
-	LOAD_LUA_API_E(luaopen_jit);
+	LOAD_LUA_API_E(luaopen_jit,A);
 
 
 	if (e_lua_newuserdatauv)
